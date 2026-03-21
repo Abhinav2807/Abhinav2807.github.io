@@ -1141,6 +1141,12 @@ body {
         padding-left: var(--sp-8);
     }
 
+    .exp-role {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
     .exp-highlights {
         grid-template-columns: 1fr;
     }

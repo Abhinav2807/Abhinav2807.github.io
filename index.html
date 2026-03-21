@@ -31,6 +31,7 @@
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#contact">Contact</a>
+            <a href="Abhinav_Resume_Base.pdf" download="Abhinav_Ayush_Resume.pdf" class="nav-mobile-download">Download Resume</a>
         </div>
     </nav>
 
@@ -64,6 +65,10 @@
             <div class="hero-actions animate-in delay-4">
                 <a href="#experience" class="btn btn-primary">View My Work</a>
                 <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                <a href="Abhinav_Resume_Base.pdf" download="Abhinav_Ayush_Resume.pdf" class="btn btn-outline btn-download">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Resume
+                </a>
             </div>
         </div>
         <div class="scroll-indicator animate-in delay-4">
@@ -409,34 +414,38 @@
                         </div>
                         <span class="terminal-session">SSH_SESSION: 202.14.99.1@PROX_HIDDEN</span>
                     </div>
-                    <form class="terminal-body" id="contactForm">
+                    <form class="terminal-body" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="d3c85a33-d14d-46ed-8460-7085a3348b2f">
+                        <input type="hidden" name="subject" value="New message from portfolio site">
+                        <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
                         <div class="terminal-field">
                             <label class="terminal-label">$ USER_NAME:</label>
                             <div class="terminal-input-wrap">
                                 <span class="terminal-prompt">›</span>
-                                <input type="text" class="terminal-input" placeholder="TYPE_HERE" required>
+                                <input type="text" name="name" class="terminal-input" placeholder="TYPE_HERE" required>
                             </div>
                         </div>
                         <div class="terminal-field">
                             <label class="terminal-label">$ RETURN_ADDRESS:</label>
                             <div class="terminal-input-wrap">
                                 <span class="terminal-prompt">›</span>
-                                <input type="email" class="terminal-input" placeholder="user@host.ext" required>
+                                <input type="email" name="email" class="terminal-input" placeholder="user@host.ext" required>
                             </div>
                         </div>
                         <div class="terminal-field">
                             <label class="terminal-label">$ PAYLOAD_MESSAGE:</label>
                             <div class="terminal-input-wrap">
                                 <span class="terminal-prompt">›</span>
-                                <textarea class="terminal-input terminal-textarea" placeholder="enter_string_data..." required></textarea>
+                                <textarea name="message" class="terminal-input terminal-textarea" placeholder="enter_string_data..." required></textarea>
                             </div>
                         </div>
                         <div class="terminal-footer">
                             <div class="terminal-status">
                                 <span class="status-dot status-dot-sm"></span>
-                                <span class="terminal-status-text">AWAITING_EXECUTION...</span>
+                                <span class="terminal-status-text" id="formStatus">AWAITING_EXECUTION...</span>
                             </div>
-                            <button type="submit" class="terminal-submit">./SEND_MESSAGE</button>
+                            <button type="submit" class="terminal-submit" id="submitBtn">./SEND_MESSAGE</button>
                         </div>
                     </form>
                 </div>

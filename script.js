@@ -41,6 +41,96 @@ navMobile.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeDrawer);
 });
 
+// ===== Contact Form with Rate Limiting =====
+(function () {
+    const form = document.getElementById('contactForm');
+    const statusText = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+    if (!form) return;
+
+    const RATE_LIMIT_KEY = 'contact_submissions';
+    const MAX_SUBMISSIONS = 3; // max per window
+    const WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+    function getSubmissions() {
+        try {
+            const data = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+            const now = Date.now();
+            return data.filter((ts) => now - ts < WINDOW_MS);
+        } catch {
+            return [];
+        }
+    }
+
+    function recordSubmission() {
+        const subs = getSubmissions();
+        subs.push(Date.now());
+        localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(subs));
+    }
+
+    function isRateLimited() {
+        return getSubmissions().length >= MAX_SUBMISSIONS;
+    }
+
+    function setStatus(text, type) {
+        statusText.textContent = text;
+        const dot = statusText.parentElement.querySelector('.status-dot');
+        if (type === 'success') {
+            dot.style.background = '#00FF41';
+            dot.style.boxShadow = '0 0 6px #00FF41';
+        } else if (type === 'error') {
+            dot.style.background = '#ff4141';
+            dot.style.boxShadow = '0 0 6px #ff4141';
+        } else if (type === 'loading') {
+            dot.style.background = '#FFD700';
+            dot.style.boxShadow = '0 0 6px #FFD700';
+        } else {
+            dot.style.background = '';
+            dot.style.boxShadow = '';
+        }
+    }
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        if (isRateLimited()) {
+            setStatus('ERR: RATE_LIMIT_EXCEEDED — TRY AGAIN LATER', 'error');
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'TRANSMITTING...';
+        setStatus('EXECUTING_HANDSHAKE...', 'loading');
+
+        try {
+            const formData = new FormData(form);
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                recordSubmission();
+                setStatus('TRANSMISSION_COMPLETE — MESSAGE_DELIVERED', 'success');
+                submitBtn.textContent = 'SENT_SUCCESSFULLY';
+                form.reset();
+                setTimeout(() => {
+                    setStatus('AWAITING_EXECUTION...', 'default');
+                    submitBtn.textContent = './SEND_MESSAGE';
+                    submitBtn.disabled = false;
+                }, 4000);
+            } else {
+                throw new Error(data.message || 'Unknown error');
+            }
+        } catch (err) {
+            setStatus('ERR: TRANSMISSION_FAILED — RETRY', 'error');
+            submitBtn.textContent = './SEND_MESSAGE';
+            submitBtn.disabled = false;
+        }
+    });
+})();
+
 // Navbar background on scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {

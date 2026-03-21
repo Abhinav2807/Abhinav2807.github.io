@@ -381,6 +381,26 @@ body {
     border-color: var(--on-surface-variant);
 }
 
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-download svg {
+    flex-shrink: 0;
+}
+
+.nav-mobile-download {
+    margin-top: auto;
+    padding-top: var(--sp-8);
+    border-top: 1px solid var(--outline-variant);
+    color: var(--primary) !important;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 40px;

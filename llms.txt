@@ -1,0 +1,41 @@
+# Abhinav Ayush
+
+> Sr. Founding Engineer & Full Stack Developer
+
+## About
+
+Abhinav Ayush is a Sr. Founding Engineer and Full Stack Developer with 5+ years of experience building products from zero to one. He specializes in AI-powered platforms, scalable cloud infrastructure, and full-stack web and mobile applications.
+
+## Current Role
+
+- Sr. Founding Engineer at Tryflume.ai (Oct 2024 — Present)
+- Single-handedly architected 12+ microservices, 5 frontend apps, and all GCP infrastructure
+- Helped close $3M+ in pre-seed funding during Hf0 residency
+
+## Previous Experience
+
+- SDE 2 at American Express (Sep 2022 — Oct 2024): Lead UI Engineer for Corporate Transaction Compliance Tool
+- SDE 1 at BrightMoney (Jan 2022 — Aug 2022): CBW Bank integration, Plaid SDK integration
+- UI Mobile Developer at OneDirect/GupShup (Sep 2021 — Jan 2022): iOS & Android SDKs
+
+## Technical Skills
+
+- Frontend: React.js, React Native, TypeScript, Next.js, Flutter, TailwindCSS, Redux/RTK Query
+- Backend: Python, FastAPI, Node.js, REST API, WebSockets
+- Databases: PostgreSQL, MongoDB, Atlas Search, Vector Search, Firebase, Redis
+- Cloud/DevOps: GCP, Cloud Run, Cloud Tasks, GCS, Docker, CI/CD, GitHub Actions
+- AI/ML: OpenAI, Google Gemini, Google ADK, LangChain, Vector Embeddings, Semantic Search
+- Integrations: Stripe, HubSpot, Plaid, Customer.io, D&B, Slack Webhooks
+
+## Education
+
+- Bachelor of Engineering — Nitte Meenakshi Institute of Technology, Bangalore (2021)
+- XII (CBSE) — Delhi Public School, Bhilai (2017)
+
+## Contact
+
+- Email: ayush.abhinav1999@gmail.com
+- Phone: +91-911-380-0160
+- LinkedIn: linkedin.com/in/abhinav999
+- GitHub: github.com/Abhinav2807
+- Website: abhinav2807.github.io

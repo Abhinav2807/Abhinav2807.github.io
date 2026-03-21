@@ -384,11 +384,16 @@ body {
 .btn-download {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    padding: var(--sp-4) var(--sp-6);
 }
 
 .btn-download svg {
     flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
 }
 
 .nav-mobile-download {

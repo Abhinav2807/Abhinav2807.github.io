@@ -1,273 +1,127 @@
-// Scroll-triggered animations
+// ===== Scroll Animations =====
 const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    },
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
 );
+document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
 
-document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-    observer.observe(el);
-});
+// ===== Hotbar + Topbar Active Tracking =====
+const hotbarSlots = document.querySelectorAll('.hslot[data-label]');
+const topbarLinks = document.querySelectorAll('.topbar-link[data-section]');
+const hotbarLabel = document.getElementById('hotbarLabel');
+const sections = ['hero', 'experience', 'skills', 'education', 'contact'];
 
-// Mobile nav drawer
-const navToggle = document.getElementById('navToggle');
-const navMobile = document.getElementById('navMobile');
-const navOverlay = document.getElementById('navOverlay');
-const navClose = document.getElementById('navClose');
-
-function openDrawer() {
-    navMobile.classList.add('active');
-    navOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+function updateActiveSection() {
+    let current = 'HOME';
+    let currentId = 'hero';
+    for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 200) {
+            const slot = document.querySelector(`.hslot[href="#${id}"]`);
+            if (slot) { current = slot.dataset.label; currentId = id; }
+        }
+    }
+    hotbarSlots.forEach((s) => s.classList.toggle('active', s.dataset.label === current));
+    topbarLinks.forEach((l) => l.classList.toggle('active', l.dataset.section === currentId));
+    if (hotbarLabel) hotbarLabel.textContent = `> WORLD: ${current}`;
 }
 
-function closeDrawer() {
-    navMobile.classList.remove('active');
-    navOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-}
+window.addEventListener('scroll', updateActiveSection);
+updateActiveSection();
 
-navToggle.addEventListener('click', openDrawer);
-navClose.addEventListener('click', closeDrawer);
-navOverlay.addEventListener('click', closeDrawer);
-
-// Close drawer on link click
-navMobile.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeDrawer);
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    const key = parseInt(e.key);
+    if (key >= 1 && key <= 6) {
+        const slot = document.querySelector(`.hslot[data-key="${key}"]`);
+        if (slot) slot.click();
+    }
 });
 
-// ===== Contact Form with Rate Limiting =====
+// ===== Contact Form =====
 (function () {
     const form = document.getElementById('contactForm');
-    const statusText = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
     if (!form) return;
 
-    const RATE_LIMIT_KEY = 'contact_submissions';
-    const MAX_SUBMISSIONS = 3; // max per window
-    const WINDOW_MS = 60 * 60 * 1000; // 1 hour
+    const RATE_KEY = 'contact_submissions';
+    const MAX = 3;
+    const WINDOW = 3600000;
 
-    function getSubmissions() {
-        try {
-            const data = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
-            const now = Date.now();
-            return data.filter((ts) => now - ts < WINDOW_MS);
-        } catch {
-            return [];
-        }
-    }
-
-    function recordSubmission() {
-        const subs = getSubmissions();
-        subs.push(Date.now());
-        localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(subs));
-    }
-
-    function isRateLimited() {
-        return getSubmissions().length >= MAX_SUBMISSIONS;
-    }
-
-    function setStatus(text, type) {
-        statusText.textContent = text;
-        const dot = statusText.parentElement.querySelector('.status-dot');
-        if (type === 'success') {
-            dot.style.background = '#00FF41';
-            dot.style.boxShadow = '0 0 6px #00FF41';
-        } else if (type === 'error') {
-            dot.style.background = '#ff4141';
-            dot.style.boxShadow = '0 0 6px #ff4141';
-        } else if (type === 'loading') {
-            dot.style.background = '#FFD700';
-            dot.style.boxShadow = '0 0 6px #FFD700';
-        } else {
-            dot.style.background = '';
-            dot.style.boxShadow = '';
-        }
+    function getSubs() {
+        try { return JSON.parse(localStorage.getItem(RATE_KEY) || '[]').filter((t) => Date.now() - t < WINDOW); }
+        catch { return []; }
     }
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
-
-        if (isRateLimited()) {
-            setStatus('ERR: RATE_LIMIT_EXCEEDED — TRY AGAIN LATER', 'error');
+        if (getSubs().length >= MAX) {
+            submitBtn.innerHTML = '[ RATE LIMITED ]';
+            setTimeout(() => { submitBtn.innerHTML = '[ <span>SEND</span> ]'; }, 3000);
             return;
         }
-
         submitBtn.disabled = true;
-        submitBtn.textContent = 'TRANSMITTING...';
-        setStatus('EXECUTING_HANDSHAKE...', 'loading');
+        submitBtn.innerHTML = '[ SENDING... ]';
 
         try {
-            const formData = new FormData(form);
-            const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData,
-            });
+            const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
             const data = await res.json();
-
             if (data.success) {
-                recordSubmission();
-                setStatus('TRANSMISSION_COMPLETE — MESSAGE_DELIVERED', 'success');
-                submitBtn.textContent = 'SENT_SUCCESSFULLY';
+                const subs = getSubs(); subs.push(Date.now());
+                localStorage.setItem(RATE_KEY, JSON.stringify(subs));
+                submitBtn.innerHTML = '[ SENT! ]';
                 form.reset();
-                setTimeout(() => {
-                    setStatus('AWAITING_EXECUTION...', 'default');
-                    submitBtn.textContent = './SEND_MESSAGE';
-                    submitBtn.disabled = false;
-                }, 4000);
-            } else {
-                throw new Error(data.message || 'Unknown error');
-            }
-        } catch (err) {
-            setStatus('ERR: TRANSMISSION_FAILED — RETRY', 'error');
-            submitBtn.textContent = './SEND_MESSAGE';
+                setTimeout(() => { submitBtn.innerHTML = '[ <span>SEND</span> ]'; submitBtn.disabled = false; }, 4000);
+            } else throw new Error();
+        } catch {
+            submitBtn.innerHTML = '[ FAILED — RETRY ]';
             submitBtn.disabled = false;
         }
     });
 })();
 
-// Navbar background on scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        nav.style.background = 'rgba(19, 19, 19, 0.95)';
-    } else {
-        nav.style.background = '';
-    }
-});
-
-// ===== Hero Canvas Animation =====
+// ===== Hero Canvas — Falling Blocks =====
 (function () {
     const canvas = document.getElementById('heroCanvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-
-    let w, h, particles, gridNodes, scanY;
-    const PRIMARY = '#00FF41';
-    const SECONDARY = '#00A2FD';
-    const DIM = 'rgba(255,255,255,0.03)';
+    let w, h, blocks;
+    const SZ = 16;
+    const COLORS = [
+        'rgba(0, 255, 65, 0.08)',
+        'rgba(0, 255, 255, 0.06)',
+        'rgba(255, 170, 0, 0.05)',
+        'rgba(255, 107, 157, 0.04)',
+        'rgba(255, 255, 255, 0.03)',
+    ];
 
     function resize() {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        w = canvas.width = rect.width;
-        h = canvas.height = rect.height;
+        const r = canvas.parentElement.getBoundingClientRect();
+        w = canvas.width = r.width; h = canvas.height = r.height;
     }
-
-    // Floating particles
-    function initParticles() {
-        particles = [];
-        const count = Math.floor((w * h) / 18000);
-        for (let i = 0; i < count; i++) {
-            particles.push({
-                x: Math.random() * w,
+    function initBlocks() {
+        blocks = [];
+        for (let i = 0; i < Math.floor((w * h) / 8000); i++) {
+            blocks.push({
+                x: Math.floor(Math.random() * (w / SZ)) * SZ,
                 y: Math.random() * h,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                r: Math.random() * 1.5 + 0.5,
-                color: Math.random() > 0.8 ? PRIMARY : Math.random() > 0.5 ? SECONDARY : 'rgba(255,255,255,0.15)',
+                speed: 0.2 + Math.random() * 0.5,
+                color: COLORS[Math.floor(Math.random() * COLORS.length)],
             });
         }
     }
-
-    // Grid nodes (stationary dots that particles connect to)
-    function initGrid() {
-        gridNodes = [];
-        const spacing = 80;
-        for (let x = spacing; x < w; x += spacing) {
-            for (let y = spacing; y < h; y += spacing) {
-                if (Math.random() > 0.6) {
-                    gridNodes.push({ x, y });
-                }
-            }
-        }
-    }
-
-    scanY = 0;
-
     function draw() {
         ctx.clearRect(0, 0, w, h);
-
-        // Draw sparse grid dots
-        ctx.fillStyle = DIM;
-        for (const node of gridNodes) {
-            ctx.fillRect(node.x, node.y, 1, 1);
+        ctx.fillStyle = 'rgba(0, 255, 65, 0.012)';
+        for (let x = 0; x < w; x += SZ) for (let y = 0; y < h; y += SZ) ctx.fillRect(x, y, 1, 1);
+        for (const b of blocks) {
+            b.y += b.speed;
+            if (b.y > h) { b.y = -SZ; b.x = Math.floor(Math.random() * (w / SZ)) * SZ; }
+            ctx.fillStyle = b.color;
+            ctx.fillRect(b.x, b.y, SZ - 1, SZ - 1);
         }
-
-        // Draw horizontal scan line
-        scanY += 0.4;
-        if (scanY > h) scanY = -20;
-        const scanGrad = ctx.createLinearGradient(0, scanY - 10, 0, scanY + 10);
-        scanGrad.addColorStop(0, 'transparent');
-        scanGrad.addColorStop(0.5, 'rgba(0, 255, 65, 0.04)');
-        scanGrad.addColorStop(1, 'transparent');
-        ctx.fillStyle = scanGrad;
-        ctx.fillRect(0, scanY - 10, w, 20);
-
-        // Update and draw particles
-        for (const p of particles) {
-            p.x += p.vx;
-            p.y += p.vy;
-
-            // Wrap around
-            if (p.x < 0) p.x = w;
-            if (p.x > w) p.x = 0;
-            if (p.y < 0) p.y = h;
-            if (p.y > h) p.y = 0;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.fill();
-        }
-
-        // Draw connections between nearby particles
-        ctx.lineWidth = 0.5;
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = dx * dx + dy * dy;
-                if (dist < 12000) {
-                    const alpha = 1 - dist / 12000;
-                    ctx.strokeStyle = `rgba(0, 255, 65, ${alpha * 0.08})`;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
-
-        // Occasional "data stream" vertical lines
-        if (Math.random() > 0.97) {
-            const lx = Math.random() * w;
-            const lh = Math.random() * 100 + 40;
-            const ly = Math.random() * h;
-            const grad = ctx.createLinearGradient(lx, ly, lx, ly + lh);
-            grad.addColorStop(0, 'transparent');
-            grad.addColorStop(0.3, 'rgba(0, 162, 253, 0.06)');
-            grad.addColorStop(0.7, 'rgba(0, 255, 65, 0.04)');
-            grad.addColorStop(1, 'transparent');
-            ctx.fillStyle = grad;
-            ctx.fillRect(lx, ly, 1, lh);
-        }
-
         requestAnimationFrame(draw);
     }
-
-    resize();
-    initParticles();
-    initGrid();
-    draw();
-
-    window.addEventListener('resize', () => {
-        resize();
-        initParticles();
-        initGrid();
-    });
+    resize(); initBlocks(); draw();
+    window.addEventListener('resize', () => { resize(); initBlocks(); });
 })();

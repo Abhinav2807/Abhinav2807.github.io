@@ -9,26 +9,20 @@
     <meta name="author" content="Abhinav Ayush">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://abhinav2807.github.io/">
-
-    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abhinav2807.github.io/">
     <meta property="og:title" content="Abhinav Ayush — Sr. Founding Engineer">
     <meta property="og:description" content="Building products from zero to one. 5+ years crafting full-stack platforms, AI-powered systems, and scalable cloud infrastructure.">
     <meta property="og:site_name" content="Abhinav Ayush">
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Abhinav Ayush — Sr. Founding Engineer">
     <meta name="twitter:description" content="Building products from zero to one. 5+ years crafting full-stack platforms, AI-powered systems, and scalable cloud infrastructure.">
-
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -39,288 +33,197 @@
         "description": "Full Stack Developer with 5+ years building AI-powered platforms, scalable cloud infrastructure, and products from zero to one.",
         "email": "ayush.abhinav1999@gmail.com",
         "telephone": "+91-911-380-0160",
-        "sameAs": [
-            "https://linkedin.com/in/abhinav999",
-            "https://github.com/Abhinav2807"
-        ],
-        "knowsAbout": ["React", "TypeScript", "Python", "FastAPI", "GCP", "MongoDB", "PostgreSQL", "AI/ML", "Docker", "Stripe"],
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Nitte Meenakshi Institute of Technology, Bangalore"
-        },
-        "worksFor": {
-            "@type": "Organization",
-            "name": "Tryflume.ai"
-        }
+        "sameAs": ["https://linkedin.com/in/abhinav999","https://github.com/Abhinav2807"],
+        "knowsAbout": ["React","TypeScript","Python","FastAPI","GCP","MongoDB","PostgreSQL","AI/ML","Docker","Stripe"],
+        "alumniOf": {"@type": "EducationalOrganization","name": "Nitte Meenakshi Institute of Technology, Bangalore"},
+        "worksFor": {"@type": "Organization","name": "Tryflume.ai"}
     }
     </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">AA</a>
-            <div class="nav-links">
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#education">Education</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
+    <!-- CRT Overlays -->
+    <div class="crt-scanlines"></div>
+    <div class="pixel-grid-overlay"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar" id="topbar">
+        <div class="topbar-left">
+            <span class="material-symbols-outlined topbar-icon">terminal</span>
+            <span class="topbar-title">PIXEL_ARCHITECT</span>
         </div>
-        <div class="nav-overlay" id="navOverlay"></div>
-        <div class="nav-mobile" id="navMobile">
-            <button class="nav-mobile-close" id="navClose" aria-label="Close menu">✕</button>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-            <a href="Abhinav_Resume_Base.pdf" download="Abhinav_Ayush_Resume.pdf" class="nav-mobile-download">Download Resume</a>
+        <nav class="topbar-nav">
+            <a href="#hero" class="topbar-link active" data-section="hero">HOME</a>
+            <a href="#experience" class="topbar-link" data-section="experience">EXP</a>
+            <a href="#skills" class="topbar-link" data-section="skills">SKILLS</a>
+            <a href="#education" class="topbar-link" data-section="education">EDU</a>
+            <a href="#contact" class="topbar-link" data-section="contact">CONTACT</a>
+        </nav>
+        <div class="topbar-right">
+            <a href="Abhinav_Resume_Base.pdf" download="Abhinav_Ayush_Resume.pdf" class="topbar-btn" title="Download Resume">
+                <span class="material-symbols-outlined">download</span>
+            </a>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero -->
     <section class="hero" id="hero">
         <canvas class="hero-canvas" id="heroCanvas"></canvas>
-        <div class="hero-bg">
-            <div class="hero-gradient"></div>
-            <div class="hero-grid"></div>
-        </div>
+        <!-- Floating pixel decor -->
+        <div class="floating-pixel fp-1"></div>
+        <div class="floating-pixel fp-2"></div>
+        <div class="floating-pixel fp-3"></div>
+
         <div class="hero-content">
-            <div class="hero-badge animate-in">Sr. Founding Engineer · Full Stack Developer</div>
-            <h1 class="hero-name animate-in delay-1">Abhinav<br><span class="hero-name-accent">Ayush</span></h1>
-            <p class="hero-tagline animate-in delay-2">Building products from zero to one. 5+ years crafting full-stack platforms, AI-powered systems, and scalable cloud infrastructure.</p>
-            <div class="hero-stats animate-in delay-3">
-                <div class="stat">
-                    <span class="stat-number">5+</span>
-                    <span class="stat-label">Years Exp.</span>
+            <div class="win95 hero-window step-fade">
+                <div class="win95-titlebar">
+                    <div class="win95-titlebar-left">
+                        <span class="material-symbols-outlined win95-titlebar-icon">description</span>
+                        <span class="win95-titlebar-text">player_info.dat</span>
+                    </div>
+                    <div class="win95-titlebar-btns">
+                        <span class="win95-btn">_</span>
+                        <span class="win95-btn">X</span>
+                    </div>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">12+</span>
-                    <span class="stat-label">Microservices</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">$3M+</span>
-                    <span class="stat-label">Funding Enabled</span>
+                <div class="hero-body">
+                    <div class="hero-status">
+                        <span class="pixel-dot blink"></span>
+                        <span>STATUS: ONLINE</span>
+                    </div>
+                    <h1 class="hero-name">ABHINAV AYUSH<span class="cursor-blink">_</span></h1>
+                    <p class="hero-subtitle">Sr. Founding Engineer // Full Stack Developer</p>
+                    <p class="hero-tagline">Building products from zero to one. 5+ years crafting full-stack platforms, AI-powered systems, and scalable cloud infrastructure.</p>
+                    <div class="hero-stats">
+                        <div class="stat-block">
+                            <span class="stat-val">5+ YEARS</span>
+                            <span class="stat-key">EXPERIENCE</span>
+                        </div>
+                        <div class="stat-block">
+                            <span class="stat-val">$3M+ FUNDING</span>
+                            <span class="stat-key">RAISED</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#experience" class="mc-btn mc-btn-primary">[ VIEW QUESTS ]</a>
+                        <a href="#contact" class="mc-btn mc-btn-ghost">[ SEND MESSAGE ]</a>
+                        <a href="Abhinav_Resume_Base.pdf" download="Abhinav_Ayush_Resume.pdf" class="mc-btn mc-btn-download">
+                            <span class="material-symbols-outlined mc-btn-icon">download</span> RESUME
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="hero-actions animate-in delay-4">
-                <a href="#experience" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-outline">Get in Touch</a>
-                <a href="Abhinav_Resume_Base.pdf" download="Abhinav_Ayush_Resume.pdf" class="btn btn-outline btn-download">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    <span>RESUME</span>
-                </a>
-            </div>
-        </div>
-        <div class="scroll-indicator animate-in delay-4">
-            <div class="scroll-line"></div>
         </div>
     </section>
 
     <!-- Experience -->
     <section class="section" id="experience">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Career</span>
-                <h2 class="section-title">Experience</h2>
-            </div>
+            <div class="win95 section-window animate-on-scroll">
+                <div class="win95-titlebar win95-titlebar-dark">
+                    <div class="win95-titlebar-left">
+                        <span class="material-symbols-outlined win95-titlebar-icon">description</span>
+                        <span class="win95-titlebar-text">quest_log.dat</span>
+                    </div>
+                    <div class="win95-titlebar-btns">
+                        <span class="win95-btn-dark">_</span>
+                        <span class="win95-btn-dark">□</span>
+                        <span class="win95-btn-dark">X</span>
+                    </div>
+                </div>
+                <div class="section-window-body">
+                    <div class="section-watermark">02</div>
+                    <div class="section-status">
+                        <span class="pixel-dot blink"></span>
+                        <span>STATUS: ACTIVE</span>
+                    </div>
+                    <h2 class="section-title">EXPERIENCE_LOG</h2>
 
-            <!-- Tryflume -->
-            <div class="exp-card animate-on-scroll">
-                <div class="exp-header">
-                    <div class="exp-header-left">
-                        <div class="exp-company-badge">Current</div>
-                        <h3 class="exp-company">Tryflume.ai</h3>
-                        <div class="exp-roles">
-                            <div class="exp-role">
-                                <span class="exp-role-title">Sr. Founding Engineer</span>
-                                <span class="exp-role-date">Oct 2024 — Present</span>
+                    <div class="exp-stack">
+                        <!-- Tryflume -->
+                        <div class="exp-card animate-on-scroll">
+                            <div class="exp-header">
+                                <div class="exp-header-left">
+                                    <div class="pixel-dot dot-green"></div>
+                                    <h3 class="exp-role-name">Sr. Founding Engineer</h3>
+                                </div>
                             </div>
-                            <div class="exp-role">
-                                <span class="exp-role-title">Part-time Consultant</span>
-                                <span class="exp-role-date">May 2024 — Oct 2024</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="exp-body">
-                    <div class="exp-highlights">
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🏗️</div>
-                            <div class="highlight-text">
-                                <strong>Built from scratch</strong> — Joined as founding engineer during Hf0 residency. Single-handedly architected 12+ microservices, 5 frontend apps, and all GCP infrastructure, helping close $3M+ in pre-seed funding.
+                            <p class="exp-company">TRYFLUME.AI // Oct 2024 - PRESENT</p>
+                            <p class="exp-company-sub">Part-time Consultant // May 2024 - Oct 2024</p>
+                            <ul class="exp-highlights">
+                                <li>> Founding engineer during Hf0 residency. Built <strong>12+ microservices</strong>, 5 frontend apps, all GCP infra — helped close <strong>$3M+ pre-seed</strong>.</li>
+                                <li>> <strong>Multi-modal product discovery</strong> — vision embeddings, MongoDB Atlas Vector Search, Gemini Flash reranking across 4,000+ suppliers.</li>
+                                <li>> Hybrid headless/headful <strong>web scraping system</strong> — 200+ GB supplier catalog data with extraction pipelines.</li>
+                                <li>> <strong>Real-time AI sourcing assistant</strong> — Socket.io with 3 specialized agents. Photo to supplier quote in one conversation.</li>
+                                <li>> <strong>SourcingHub platform</strong> — state-machine lifecycle, Kanban boards, commercial doc generation, HubSpot CRM sync.</li>
+                                <li>> End-to-end <strong>commercial pipeline</strong>: Quote → Proforma → Invoice → PO with Stripe, tax calc, Mercury reconciliation.</li>
+                            </ul>
+                            <div class="exp-tech">
+                                <span>Python</span><span>FastAPI</span><span>React</span><span>TypeScript</span><span>MongoDB</span><span>PostgreSQL</span><span>GCP</span><span>Firebase</span><span>Stripe</span><span>OpenAI</span><span>Gemini</span><span>Docker</span>
                             </div>
                         </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🔍</div>
-                            <div class="highlight-text">
-                                <strong>Multi-modal product discovery</strong> — Vision embeddings, MongoDB Atlas Vector Search, and Gemini Flash reranking via Reciprocal Rank Fusion across 4,000+ suppliers and 40+ categories.
-                            </div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🕷️</div>
-                            <div class="highlight-text">
-                                <strong>Web scraping at scale</strong> — Hybrid headless/headful system (Playwright + Browserbase) crawling manufacturer websites, downloading 200+ GB of supplier catalog data with extraction and normalization pipelines.
-                            </div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🤖</div>
-                            <div class="highlight-text">
-                                <strong>AI sourcing assistant</strong> — Real-time Socket.io chat with 3 specialized agents for text, image, and document-based product search. Photo to supplier quote in a single conversation.
-                            </div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">📦</div>
-                            <div class="highlight-text">
-                                <strong>SourcingHub platform</strong> — State-machine project lifecycle, spec lists, takeoff workflows, drag-and-drop Kanban, commercial doc generation, and automated HubSpot CRM sync.
-                            </div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">💰</div>
-                            <div class="highlight-text">
-                                <strong>End-to-end commercial pipeline</strong> — Quote → Proforma → Invoice → PO with Stripe payments, US tax calculation, Mercury bank reconciliation, and AI-powered QA. Reduced quote turnaround from days to hours.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="exp-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">GCP</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Stripe</span>
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">Gemini</span>
-                        <span class="tech-tag">Playwright</span>
-                        <span class="tech-tag">Socket.io</span>
-                        <span class="tech-tag">Docker</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- American Express -->
-            <div class="exp-card animate-on-scroll">
-                <div class="exp-header">
-                    <div class="exp-header-left">
-                        <h3 class="exp-company">American Express</h3>
-                        <div class="exp-roles">
-                            <div class="exp-role">
-                                <span class="exp-role-title">SDE 2</span>
-                                <span class="exp-role-date">Sep 2022 — Oct 2024</span>
+                        <!-- American Express -->
+                        <div class="exp-card animate-on-scroll">
+                            <div class="exp-header">
+                                <div class="exp-header-left">
+                                    <div class="pixel-dot dot-yellow"></div>
+                                    <h3 class="exp-role-name">SDE 2</h3>
+                                </div>
+                            </div>
+                            <p class="exp-company">AMERICAN EXPRESS // Sep 2022 - Oct 2024</p>
+                            <ul class="exp-highlights">
+                                <li>> <strong>Lead UI Engineer</strong> for Corporate Transaction Compliance Tool — Ingestion & Visualizer micro-frontends.</li>
+                                <li>> Redux + RTK Query caching, virtualized tables for <strong>100k+ rows</strong>, cut load time by 40%.</li>
+                                <li>> <strong>Visual query builder</strong> — drag-and-drop complex filters compiling to backend DSL with real-time previews.</li>
+                            </ul>
+                            <div class="exp-tech">
+                                <span>React</span><span>TypeScript</span><span>Node.js</span><span>Python</span><span>FastAPI</span><span>Redis</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="exp-body">
-                    <div class="exp-highlights">
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🛡️</div>
-                            <div class="highlight-text">
-                                <strong>Lead UI Engineer</strong> for Corporate Transaction Compliance Tool — designed and shipped Ingestion and Visualizer micro-frontend modules for auditing high-volume corporate card transactions.
-                            </div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">⚡</div>
-                            <div class="highlight-text">
-                                <strong>Performance optimization</strong> — Redux state management, RTK Query caching with optimistic updates, lazy-loaded code splitting, and virtualized table rendering for 100k+ rows. Cut initial load time by 40%.
-                            </div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🔧</div>
-                            <div class="highlight-text">
-                                <strong>Visual query builder</strong> — Drag-and-drop UI for constructing complex filter conditions (AND/OR groups, nested predicates) compiling to backend query DSL with real-time result previews.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="exp-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Redis</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- BrightMoney -->
-            <div class="exp-card animate-on-scroll">
-                <div class="exp-header">
-                    <div class="exp-header-left">
-                        <h3 class="exp-company">BrightMoney</h3>
-                        <div class="exp-roles">
-                            <div class="exp-role">
-                                <span class="exp-role-title">SDE 1</span>
-                                <span class="exp-role-date">Jan 2022 — Aug 2022</span>
+                        <!-- BrightMoney -->
+                        <div class="exp-card animate-on-scroll">
+                            <div class="exp-header">
+                                <div class="exp-header-left">
+                                    <div class="pixel-dot dot-yellow-dim"></div>
+                                    <h3 class="exp-role-name">SDE 1</h3>
+                                </div>
+                            </div>
+                            <p class="exp-company">BRIGHTMONEY // Jan 2022 - Aug 2022</p>
+                            <ul class="exp-highlights">
+                                <li>> <strong>CBW Bank integration</strong> — expanded eligibility from 15 to all 50 US states.</li>
+                                <li>> <strong>Plaid SDK integration</strong>, improved account linking. Awarded <strong>Sprint Star</strong> x2.</li>
+                            </ul>
+                            <div class="exp-tech">
+                                <span>React Native</span><span>TypeScript</span><span>Node.js</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="exp-body">
-                    <div class="exp-highlights">
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🏦</div>
-                            <div class="highlight-text">
-                                <strong>CBW Bank integration</strong> — Expanded eligibility from 15 to all 50 US states. Owned the Account Linking mechanism (Bright Search) for Checking and Credit Accounts.
-                            </div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🔗</div>
-                            <div class="highlight-text">
-                                <strong>Plaid SDK integration</strong> — Improved account linking success rate on App & Web. Identified and resolved security vulnerabilities. Awarded Sprint Star in two consecutive sprints.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="exp-tech">
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Node.js</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- OneDirect -->
-            <div class="exp-card animate-on-scroll">
-                <div class="exp-header">
-                    <div class="exp-header-left">
-                        <h3 class="exp-company">OneDirect (GupShup)</h3>
-                        <div class="exp-roles">
-                            <div class="exp-role">
-                                <span class="exp-role-title">UI Mobile Developer</span>
-                                <span class="exp-role-date">Sep 2021 — Jan 2022</span>
+                        <!-- OneDirect -->
+                        <div class="exp-card animate-on-scroll">
+                            <div class="exp-header">
+                                <div class="exp-header-left">
+                                    <div class="pixel-dot dot-green-dim"></div>
+                                    <h3 class="exp-role-name">UI Mobile Developer</h3>
+                                </div>
+                            </div>
+                            <p class="exp-company">ONEDIRECT (GUPSHUP) // Sep 2021 - Jan 2022</p>
+                            <ul class="exp-highlights">
+                                <li>> Built <strong>iOS & Android SDKs</strong> for Feedback Product. Used by <strong>500+ organizations</strong>.</li>
+                                <li>> Owned the <strong>React Native app</strong> — notification system + reusable UI component library.</li>
+                            </ul>
+                            <div class="exp-tech">
+                                <span>React.js</span><span>Angular.js</span><span>Android</span><span>iOS</span><span>React Native</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="exp-body">
-                    <div class="exp-highlights">
-                        <div class="highlight-card">
-                            <div class="highlight-icon">📱</div>
-                            <div class="highlight-text">
-                                <strong>iOS & Android SDKs</strong> — Built native SDKs for the organization's Feedback Product. Developed rating mechanisms used by 500+ organizations.
-                            </div>
+
+                    <div class="window-footer-status">
+                        <div class="footer-status-left">
+                            <span class="footer-status-text">> SYSTEM: READY</span>
+                            <span class="cursor-block blink"></span>
                         </div>
-                        <div class="highlight-card">
-                            <div class="highlight-icon">🧩</div>
-                            <div class="highlight-text">
-                                <strong>React Native app</strong> — Owned the company's mobile app, built the notification system and reusable UI component library.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="exp-tech">
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Angular.js</span>
-                        <span class="tech-tag">Android</span>
-                        <span class="tech-tag">iOS</span>
-                        <span class="tech-tag">React Native</span>
+                        <span class="footer-status-version">v2.4.0-STABLE</span>
                     </div>
                 </div>
             </div>
@@ -328,86 +231,89 @@
     </section>
 
     <!-- Skills -->
-    <section class="section section-alt" id="skills">
+    <section class="section" id="skills">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Expertise</span>
-                <h2 class="section-title">Skills & Technologies</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category animate-on-scroll">
-                    <div class="skill-category-icon">🎨</div>
-                    <h3 class="skill-category-title">Frontend / Mobile</h3>
-                    <div class="skill-tags">
-                        <span>React.js</span>
-                        <span>React Native</span>
-                        <span>TypeScript</span>
-                        <span>Next.js</span>
-                        <span>Flutter</span>
-                        <span>TailwindCSS</span>
-                        <span>Redux / RTK Query</span>
-                        <span>Socket.io</span>
+            <div class="win95 section-window animate-on-scroll">
+                <div class="win95-titlebar win95-titlebar-dark">
+                    <div class="win95-titlebar-left">
+                        <span class="material-symbols-outlined win95-titlebar-icon">description</span>
+                        <span class="win95-titlebar-text">inventory.dat</span>
+                    </div>
+                    <div class="win95-titlebar-btns">
+                        <span class="win95-btn-dark">_</span>
+                        <span class="win95-btn-dark">□</span>
+                        <span class="win95-btn-dark">X</span>
                     </div>
                 </div>
-                <div class="skill-category animate-on-scroll">
-                    <div class="skill-category-icon">⚙️</div>
-                    <h3 class="skill-category-title">Backend</h3>
-                    <div class="skill-tags">
-                        <span>Python</span>
-                        <span>FastAPI</span>
-                        <span>Node.js</span>
-                        <span>REST API</span>
-                        <span>WebSockets</span>
-                        <span>WeasyPrint</span>
+                <div class="section-window-body">
+                    <div class="section-watermark">03</div>
+                    <div class="section-status">
+                        <span class="pixel-dot blink"></span>
+                        <span>STATUS: EQUIPPED</span>
                     </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <div class="skill-category-icon">🗄️</div>
-                    <h3 class="skill-category-title">Databases</h3>
-                    <div class="skill-tags">
-                        <span>PostgreSQL</span>
-                        <span>MongoDB</span>
-                        <span>Atlas Search</span>
-                        <span>Vector Search</span>
-                        <span>Firebase</span>
-                        <span>Redis</span>
-                    </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <div class="skill-category-icon">☁️</div>
-                    <h3 class="skill-category-title">Cloud / DevOps</h3>
-                    <div class="skill-tags">
-                        <span>GCP</span>
-                        <span>Cloud Run</span>
-                        <span>Cloud Tasks</span>
-                        <span>GCS</span>
-                        <span>Docker</span>
-                        <span>CI/CD</span>
-                        <span>GitHub Actions</span>
-                    </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <div class="skill-category-icon">🧠</div>
-                    <h3 class="skill-category-title">AI / ML</h3>
-                    <div class="skill-tags">
-                        <span>OpenAI</span>
-                        <span>Google Gemini</span>
-                        <span>Google ADK</span>
-                        <span>LangChain</span>
-                        <span>Vector Embeddings</span>
-                        <span>Semantic Search</span>
-                    </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <div class="skill-category-icon">🔌</div>
-                    <h3 class="skill-category-title">Integrations</h3>
-                    <div class="skill-tags">
-                        <span>Stripe</span>
-                        <span>HubSpot</span>
-                        <span>Plaid</span>
-                        <span>Customer.io</span>
-                        <span>D&B</span>
-                        <span>Slack Webhooks</span>
+                    <h2 class="section-title">SKILL_INVENTORY</h2>
+
+                    <div class="inv-grid">
+                        <div class="inv-slot animate-on-scroll">
+                            <div class="inv-header">
+                                <span class="inv-name">Frontend / Mobile</span>
+                                <span class="inv-level">LVL 5</span>
+                            </div>
+                            <div class="inv-bar"><div class="inv-bar-fill" style="width:95%"></div></div>
+                            <div class="inv-items">
+                                <span>React.js</span><span>React Native</span><span>TypeScript</span><span>Next.js</span><span>Flutter</span><span>TailwindCSS</span><span>Redux/RTK</span><span>Socket.io</span>
+                            </div>
+                        </div>
+                        <div class="inv-slot animate-on-scroll">
+                            <div class="inv-header">
+                                <span class="inv-name">Backend</span>
+                                <span class="inv-level">LVL 5</span>
+                            </div>
+                            <div class="inv-bar"><div class="inv-bar-fill" style="width:95%"></div></div>
+                            <div class="inv-items">
+                                <span>Python</span><span>FastAPI</span><span>Node.js</span><span>REST API</span><span>WebSockets</span><span>WeasyPrint</span>
+                            </div>
+                        </div>
+                        <div class="inv-slot animate-on-scroll">
+                            <div class="inv-header">
+                                <span class="inv-name">Databases</span>
+                                <span class="inv-level">LVL 4</span>
+                            </div>
+                            <div class="inv-bar"><div class="inv-bar-fill" style="width:80%"></div></div>
+                            <div class="inv-items">
+                                <span>PostgreSQL</span><span>MongoDB</span><span>Atlas Search</span><span>Vector Search</span><span>Firebase</span><span>Redis</span>
+                            </div>
+                        </div>
+                        <div class="inv-slot animate-on-scroll">
+                            <div class="inv-header">
+                                <span class="inv-name">Cloud / DevOps</span>
+                                <span class="inv-level">LVL 4</span>
+                            </div>
+                            <div class="inv-bar"><div class="inv-bar-fill" style="width:80%"></div></div>
+                            <div class="inv-items">
+                                <span>GCP</span><span>Cloud Run</span><span>Cloud Tasks</span><span>GCS</span><span>Docker</span><span>CI/CD</span><span>GitHub Actions</span>
+                            </div>
+                        </div>
+                        <div class="inv-slot animate-on-scroll">
+                            <div class="inv-header">
+                                <span class="inv-name">AI / ML</span>
+                                <span class="inv-level">LVL 4</span>
+                            </div>
+                            <div class="inv-bar"><div class="inv-bar-fill" style="width:80%"></div></div>
+                            <div class="inv-items">
+                                <span>OpenAI</span><span>Gemini</span><span>Google ADK</span><span>LangChain</span><span>Embeddings</span><span>Semantic Search</span>
+                            </div>
+                        </div>
+                        <div class="inv-slot animate-on-scroll">
+                            <div class="inv-header">
+                                <span class="inv-name">Integrations</span>
+                                <span class="inv-level">LVL 3</span>
+                            </div>
+                            <div class="inv-bar"><div class="inv-bar-fill" style="width:65%"></div></div>
+                            <div class="inv-items">
+                                <span>Stripe</span><span>HubSpot</span><span>Plaid</span><span>Customer.io</span><span>D&B</span><span>Slack</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -417,146 +323,194 @@
     <!-- Education -->
     <section class="section" id="education">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Background</span>
-                <h2 class="section-title">Education</h2>
-            </div>
-            <div class="edu-grid">
-                <div class="edu-card animate-on-scroll">
-                    <div class="edu-year">2021</div>
-                    <h3 class="edu-degree">Bachelor of Engineering</h3>
-                    <p class="edu-school">Nitte Meenakshi Institute of Technology, Bangalore</p>
+            <div class="win95 section-window animate-on-scroll">
+                <div class="win95-titlebar win95-titlebar-gray">
+                    <div class="win95-titlebar-left">
+                        <span class="material-symbols-outlined win95-titlebar-icon">description</span>
+                        <span class="win95-titlebar-text">achievements.dat</span>
+                    </div>
+                    <div class="win95-titlebar-btns">
+                        <span class="win95-btn-gray">_</span>
+                        <span class="win95-btn-gray">□</span>
+                        <span class="win95-btn-gray">X</span>
+                    </div>
                 </div>
-                <div class="edu-card animate-on-scroll">
-                    <div class="edu-year">2017</div>
-                    <h3 class="edu-degree">XII (CBSE)</h3>
-                    <p class="edu-school">Delhi Public School, Bhilai</p>
+                <div class="section-window-body">
+                    <div class="section-watermark">04</div>
+                    <div class="section-status">
+                        <span class="pixel-dot blink"></span>
+                        <span>STATUS: UNLOCKED</span>
+                    </div>
+                    <h2 class="section-title">ACADEMIC_QUESTS<span class="cursor-blink">_</span></h2>
+
+                    <div class="edu-grid">
+                        <div class="edu-card animate-on-scroll">
+                            <div class="edu-top">
+                                <span class="edu-emoji">🎓</span>
+                                <span class="edu-year-badge">YEAR: 2021</span>
+                            </div>
+                            <h3 class="edu-degree">Bachelor of Engineering</h3>
+                            <p class="edu-school">Nitte Meenakshi Institute of Technology, Bangalore</p>
+                            <div class="edu-score-section">
+                                <span class="edu-score-label">SCORE_MODULE:</span>
+                                <span class="edu-score-val">9.0 CGPA</span>
+                            </div>
+                        </div>
+                        <div class="edu-card animate-on-scroll">
+                            <div class="edu-top">
+                                <span class="edu-emoji">📜</span>
+                                <span class="edu-year-badge">YEAR: 2017</span>
+                            </div>
+                            <h3 class="edu-degree">XII (CBSE)</h3>
+                            <p class="edu-school">Delhi Public School, Bhilai</p>
+                            <div class="edu-score-section">
+                                <span class="edu-score-label">SCORE_MODULE:</span>
+                                <span class="edu-score-val">84.80%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ascii-divider">═══════════════════════════════════════════════════════════════</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact - Terminal Style -->
-    <section class="section contact-section" id="contact">
+    <!-- Contact -->
+    <section class="section" id="contact">
         <div class="container">
-            <!-- Header -->
-            <div class="section-header contact-header animate-on-scroll">
-                <span class="section-label"><span class="status-dot"></span> Status: Open</span>
-                <h2 class="section-title">Initiate Connection</h2>
-                <div class="contact-desc">
-                    <p>System ready for inbound transmissions. Execute the form below to establish a secure handshake with the ARCHITECT.</p>
-                </div>
-            </div>
-
-            <!-- Terminal + Sidebar layout -->
-            <div class="contact-grid">
-                <!-- Terminal Form -->
-                <div class="terminal animate-on-scroll">
-                    <div class="terminal-bar">
-                        <div class="terminal-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-blue"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <span class="terminal-session">SSH_SESSION: 202.14.99.1@PROX_HIDDEN</span>
+            <div class="win95 section-window animate-on-scroll">
+                <div class="win95-titlebar win95-titlebar-blue">
+                    <div class="win95-titlebar-left">
+                        <span class="material-symbols-outlined win95-titlebar-icon" style="font-variation-settings:'FILL' 1">groups</span>
+                        <span class="win95-titlebar-text">multiplayer.exe</span>
                     </div>
-                    <form class="terminal-body" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="d3c85a33-d14d-46ed-8460-7085a3348b2f">
-                        <input type="hidden" name="subject" value="New message from portfolio site">
-                        <input type="hidden" name="from_name" value="Portfolio Contact Form">
-                        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
-                        <div class="terminal-field">
-                            <label class="terminal-label">$ USER_NAME:</label>
-                            <div class="terminal-input-wrap">
-                                <span class="terminal-prompt">›</span>
-                                <input type="text" name="name" class="terminal-input" placeholder="TYPE_HERE" required>
-                            </div>
-                        </div>
-                        <div class="terminal-field">
-                            <label class="terminal-label">$ RETURN_ADDRESS:</label>
-                            <div class="terminal-input-wrap">
-                                <span class="terminal-prompt">›</span>
-                                <input type="email" name="email" class="terminal-input" placeholder="user@host.ext" required>
-                            </div>
-                        </div>
-                        <div class="terminal-field">
-                            <label class="terminal-label">$ PAYLOAD_MESSAGE:</label>
-                            <div class="terminal-input-wrap">
-                                <span class="terminal-prompt">›</span>
-                                <textarea name="message" class="terminal-input terminal-textarea" placeholder="enter_string_data..." required></textarea>
-                            </div>
-                        </div>
-                        <div class="terminal-footer">
-                            <div class="terminal-status">
-                                <span class="status-dot status-dot-sm"></span>
-                                <span class="terminal-status-text" id="formStatus">AWAITING_EXECUTION...</span>
-                            </div>
-                            <button type="submit" class="terminal-submit" id="submitBtn">./SEND_MESSAGE</button>
-                        </div>
-                    </form>
+                    <div class="win95-titlebar-btns">
+                        <span class="win95-btn-blue">_</span>
+                        <span class="win95-btn-blue">X</span>
+                    </div>
                 </div>
+                <div class="section-window-body">
+                    <div class="section-watermark">05</div>
+                    <div class="section-status">
+                        <span class="pixel-dot blink"></span>
+                        <span>STATUS: OPEN</span>
+                    </div>
+                    <h2 class="section-title">INITIATE_CONNECTION<span class="cursor-blink">_</span></h2>
 
-                <!-- Sidebar -->
-                <div class="contact-sidebar">
-                    <!-- Active Ports -->
-                    <div class="sidebar-card animate-on-scroll">
-                        <div class="sidebar-card-header">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                            <span>ACTIVE_PORTS</span>
+                    <div class="contact-grid">
+                        <!-- Chat Form -->
+                        <div class="contact-form-area">
+                            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                                <input type="hidden" name="access_key" value="d3c85a33-d14d-46ed-8460-7085a3348b2f">
+                                <input type="hidden" name="subject" value="New message from portfolio site">
+                                <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                                <input type="checkbox" name="botcheck" style="display:none">
+                                <div class="form-field">
+                                    <label class="form-label">> PLAYER_NAME</label>
+                                    <input type="text" name="name" class="form-input" placeholder="ENTER IDENTITY..." required>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">> EMAIL_ADDR</label>
+                                    <input type="email" name="email" class="form-input" placeholder="USER@DOMAIN.SYS" required>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">> MESSAGE</label>
+                                    <textarea name="message" class="form-input form-textarea" placeholder="TYPE MESSAGE HERE..." rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="mc-btn mc-btn-primary form-submit" id="submitBtn">[ <span>SEND</span> ]</button>
+                            </form>
                         </div>
-                        <div class="port-list">
-                            <a href="https://github.com/Abhinav2807" target="_blank" rel="noopener" class="port-item">
-                                <div class="port-left">
-                                    <span class="port-name">GITHUB</span>
-                                    <span class="port-number">:443</span>
+
+                        <!-- Server Info -->
+                        <div class="contact-sidebar">
+                            <div class="sidebar-panel">
+                                <div class="sidebar-panel-label">server_info</div>
+                                <div class="server-list">
+                                    <a href="https://github.com/Abhinav2807" target="_blank" rel="noopener" class="server-row">
+                                        <span class="server-key">G_HUB:</span>
+                                        <span class="server-val">Abhinav2807</span>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/abhinav999" target="_blank" rel="noopener" class="server-row">
+                                        <span class="server-key">L_INK:</span>
+                                        <span class="server-val">abhinav999</span>
+                                    </a>
+                                    <a href="mailto:ayush.abhinav1999@gmail.com" class="server-row">
+                                        <span class="server-key">M_AIL:</span>
+                                        <span class="server-val">ayush.abhinav1999</span>
+                                    </a>
+                                    <a href="tel:+919113800160" class="server-row">
+                                        <span class="server-key">V_OICE:</span>
+                                        <span class="server-val">+91-911-380-0160</span>
+                                    </a>
                                 </div>
-                                <span class="port-value">Abhinav2807</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/abhinav999" target="_blank" rel="noopener" class="port-item">
-                                <div class="port-left">
-                                    <span class="port-name">LINKEDIN</span>
-                                    <span class="port-number">:8080</span>
+                            </div>
+                            <div class="sidebar-panel">
+                                <div class="sidebar-panel-label">coordinates</div>
+                                <div class="coord-map">
+                                    <div class="coord-grid"></div>
+                                    <div class="coord-pin"></div>
+                                    <div class="coord-pin-inner"></div>
+                                    <span class="coord-text">LOC: 12.97° N, 77.59° E</span>
                                 </div>
-                                <span class="port-value">abhinav999</span>
-                            </a>
-                            <a href="mailto:ayush.abhinav1999@gmail.com" class="port-item">
-                                <div class="port-left">
-                                    <span class="port-name">EMAIL</span>
-                                    <span class="port-number">:25</span>
-                                </div>
-                                <span class="port-value">ayush.abhinav1999</span>
-                            </a>
-                            <a href="tel:+919113800160" class="port-item">
-                                <div class="port-left">
-                                    <span class="port-name">PHONE</span>
-                                    <span class="port-number">:5060</span>
-                                </div>
-                                <span class="port-value">+91-911-380-0160</span>
-                            </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Node Location -->
-                    <div class="sidebar-card node-card animate-on-scroll">
-                        <div class="sidebar-card-header node-header">
-                            <span>NODE_LOCATION</span>
+                    <!-- Window status bar -->
+                    <div class="win-statusbar">
+                        <div class="win-statusbar-left">
+                            <span>SECTOR: 7G</span>
+                            <span>PKTS: 124KB/S</span>
                         </div>
-                        <div class="node-map">
-                            <div class="map-grid"></div>
-                            <div class="map-pin"></div>
-                        </div>
-                        <div class="node-coords">COORDINATES: 12.9716° N, 77.5946° E</div>
+                        <span>ENCRYPTION: 128-BIT</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Hotbar -->
+    <nav class="hotbar" id="hotbar">
+        <div class="hotbar-label" id="hotbarLabel">> WORLD: HOME</div>
+        <div class="hotbar-slots">
+            <a href="#hero" class="hslot active" data-key="1" data-label="HOME">
+                <span class="material-symbols-outlined hslot-icon">home</span>
+                <span class="hslot-key">1</span>
+            </a>
+            <a href="#experience" class="hslot" data-key="2" data-label="EXP">
+                <span class="material-symbols-outlined hslot-icon">shield</span>
+                <span class="hslot-key">2</span>
+            </a>
+            <a href="#skills" class="hslot" data-key="3" data-label="SKILLS">
+                <span class="material-symbols-outlined hslot-icon">handyman</span>
+                <span class="hslot-key">3</span>
+            </a>
+            <a href="#education" class="hslot" data-key="4" data-label="EDU">
+                <span class="material-symbols-outlined hslot-icon">school</span>
+                <span class="hslot-key">4</span>
+            </a>
+            <a href="#contact" class="hslot" data-key="5" data-label="CONTACT">
+                <span class="material-symbols-outlined hslot-icon">mail</span>
+                <span class="hslot-key">5</span>
+            </a>
+            <a href="Abhinav_Resume_Base.pdf" download="Abhinav_Ayush_Resume.pdf" class="hslot" data-key="6" data-label="RESUME">
+                <span class="material-symbols-outlined hslot-icon">description</span>
+                <span class="hslot-key">6</span>
+            </a>
+        </div>
+        <div class="hotbar-xp">
+            <div class="xp-bar-wrap">
+                <div class="xp-bar"><div class="xp-fill"></div></div>
+                <span class="xp-text">XP: 5+ YRS</span>
+            </div>
+        </div>
+    </nav>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Abhinav Ayush. All rights reserved.</p>
-        </div>
+        <span>&copy; 2026 ABHINAV_AYUSH // ALL_RIGHTS_RESERVED</span>
+        <span class="footer-ver">BUILD_STABLE v2.0.0</span>
     </footer>
 
     <script src="script.js"></script>

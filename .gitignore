@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# Allow committed project files
+!.gitignore
+!index.html
+!styles.css
+!script.js
+!favicon.svg
+!Abhinav_Resume_Base.pdf
+!llms.txt
+!robots.txt
+!sitemap.xml
+!README.md
